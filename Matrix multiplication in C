@@ -1,0 +1,73 @@
+#include<stdio.h>
+int main()
+{
+    //Declaring the variables 
+    int mat_1[100][100],mat_2[100][100],row1,row2,col1,col2,i,j;
+    
+    //Taking the inputs for size of matrix 1
+    printf("Enter the size of matrix 1 (row-column): ");
+    scanf("%d %d",&row1,&col1);
+
+    //Taking the inputs for Elements of matrix 1 using for loop
+    printf("Enter the matrix Elements:\n ");
+    for(i=0; i<row1; i++) //for-loop for row (i represents rows)
+    {
+        for(j=0; j<col1; j++) //nested for-loop for column (j represents column)
+        {
+            printf(">");
+            scanf("%d",&mat_1[i][j]); //take the input for the position of matrix in each itteration
+        }
+    }
+
+    //Taking the inputs for the size of matrix 2
+    printf("Enter the size of matrix 2 (row-column): ");
+    scanf("%d%d",&row2,&col2);
+
+    //Taking the inputs for the Elements of matrix 2
+    printf("Enter the elements of matrix 2:\n");
+    for(int i=0; i<row2; i++)//for-loop for row (i represents rows)
+    {
+        for(int j=0; j<col2; j++) //nested for-loop for column (j represents column)
+        {
+            printf(">");
+            scanf("%d",&mat_2[i][j]); //take the input for the position of matrix in each itteration
+        }
+    }
+    int resmat[row1][col2];//Declaring the resultant matrix
+    
+    //checking the conditions of matrix multiplication
+    if(col1!=row2)
+    {
+        printf("Matrix multiplication is not possible.");
+    }
+    else
+    {
+        
+        int sum=0;
+        int k;
+        //logic of matrix multiplication
+        for(i=0; i<row1; i++)
+        {
+            for(j=0; j<col1; j++)
+            {
+                sum=0;
+                for(k=0; k<col1; k++)
+                {
+                    sum = sum+mat_1[i][k]*mat_2[k][j];
+                }
+                resmat[i][j]=sum;
+            }
+        }
+    }
+    //printing the product of 2 matrices
+    printf("Resulant matrix:\n");
+    for(i=0; i<row1; i++)
+    {
+        for(j=0; j<col2; j++)
+        {
+            printf("%d  ",resmat[i][j]);
+        }
+        printf("\n");
+    }
+    
+}
